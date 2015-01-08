@@ -107,7 +107,10 @@ class MemMap {
     return size_;
   }
 
-  byte* End() const {
+  // Resize the mem-map by unmapping pages at the end. Currently only supports shrinking.
+  void SetSize(size_t new_size);
+
+  uint8_t* End() const {
     return Begin() + Size();
   }
 
